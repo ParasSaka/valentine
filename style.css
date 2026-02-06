@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background:
+        linear-gradient(rgba(255,182,193,0.75), rgba(255,182,193,0.75)),
+        url("hearts.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Pacifico', cursive;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    max-width: 380px;
+}
+
+.bear {
+    width: 120px;
+}
+
+h2, h1 {
+    color: #ff4d6d;
+}
+
+/* BUTTONS */
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.yes-button {
+    background: #ff4d6d;
+    color: white;
+}
+
+.no-button {
+    background: #ccc;
+}
+
+/* GIF */
+.gif {
+    width: 150px;
+}
+
+/* PHOTO GRID */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* LIGHTBOX */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(148, 99, 99, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+#lightbox-text {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+}
+
+/* NOTE */
+.note {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* FLOATING HEARTS */
+.hearts::before {
+    content: "💖 💕 💗 💓 💘 💞";
+    position: fixed;
+    bottom: -10%;
+    left: 0;
+    width: 100%;
+    font-size: 28px;
+    animation: float 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-120vh); }
+}

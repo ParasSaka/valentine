@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I Love You ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card love-card">
+
+    <img class="gif" src="love.gif" alt="love gif">
+
+    <div class="photo-grid">
+        <img src="IMG_2013.JPG" onclick="openLightbox(0)">
+        <img src="IMG_2014.JPG" onclick="openLightbox(1)">
+        <img src="IMG_0039.JPG" onclick="openLightbox(2)">
+        <img src="6feb.jpeg" onclick="openLightbox(3)">
+    </div>
+
+    <h1>I Love You ❤️</h1>
+
+    <p class="note">
+        You are my favorite person, my happiness,  
+        and the reason I smile every day.  
+        Thank you for being mine. 💕  
+        I love you endlessly.
+    </p>
+
+</div>
+
+<div class="hearts"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content">
+        <img id="lightbox-img">
+        <div id="lightbox-text"></div>
+    </div>
+</div>
+
+<script>
+const images = [
+    "IMG_2013.JPG",
+    "IMG_2014.JPG",
+    "IMG_0039.JPG",
+    "6feb.jpeg"
+];
+
+const texts = [
+    "My favorite person ❤️",
+    "My favorite smile 💕",
+    "You are my happiness 🥰",
+    "You & Me, always 💖"
+];
+
+let current = 0;
+
+function openLightbox(index) {
+    current = index;
+    document.getElementById("lightbox-img").src = images[current];
+    document.getElementById("lightbox-text").innerText = texts[current];
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+/* SWIPE */
+let startX = 0;
+document.getElementById("lightbox").addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+});
+
+document.getElementById("lightbox").addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+    if (endX < startX - 50) next();
+    if (endX > startX + 50) prev();
+});
+
+function next() {
+    current = (current + 1) % images.length;
+    openLightbox(current);
+}
+
+function prev() {
+    current = (current - 1 + images.length) % images.length;
+    openLightbox(current);
+}
+</script>
+
+</body>
+</html>
